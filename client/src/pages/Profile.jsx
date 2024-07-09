@@ -9,11 +9,12 @@ import {
 import { app } from '../firebase';
 export default function Profile() {
   const fileRef = useRef(null);
-  const { currentUser} = useSelector((state) => state.user);
+  const { currentUser } = useSelector((state) => state.user);
   const [file, setFile] = useState(undefined);
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
+
   // firebase storage
   // allow read;
   // allow write: if
@@ -25,7 +26,6 @@ export default function Profile() {
       handleFileUpload(file);
     }
   }, [file]);
-
   const handleFileUpload = (file) => {
     const storage = getStorage(app);
     const fileName = new Date().getTime() + file.name;
